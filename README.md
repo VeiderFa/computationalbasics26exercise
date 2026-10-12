@@ -12,6 +12,10 @@ Python-Umgebung ist im Repo definiert. Du musst nur **ein** Tool installieren
 | **git** | `winget install --id=Git.Git -e` | `git --version` öffnen – Xcode Command Line Tools werden angeboten |
 | **VS Code** | `winget install --id=Microsoft.VisualStudioCode -e` | `brew install --cask visual-studio-code` |
 
+> Falls du VS Code noch nicht in der ersten Vorlesung installiert hast, kannst du
+> es auch direkt von der Website herunterladen:
+> [https://code.visualstudio.com/](https://code.visualstudio.com/)
+
 > **Wichtig:** Terminal (und VS Code) nach der Installation **schließen und neu
 > öffnen**, sonst findet das System die neuen Befehle nicht.
 
