@@ -19,26 +19,29 @@ Python-Umgebung ist im Repo definiert. Du musst nur **ein** Tool installieren
 > **Wichtig:** Terminal (und VS Code) nach der Installation **schließen und neu
 > öffnen**, sonst findet das System die neuen Befehle nicht.
 
-## 2. Repo holen
+## 2. Repository holen
 
-In VS Code: **Strg/Cmd+Shift+P → "Git: Clone"**, URL einfügen:
+Wenn eine dieser Optionen nicht funktioniert, eine der anderen ausprobieren.
+
+1. In VS Code: **Strg/Cmd+Shift+P → "Git: Clone"**, URL einfügen:
 `https://github.com/VeiderFa/computationalbasics26exercise.git`,
 Ordner wählen, dann **Open**.
 
-Alternativ im Terminal: `git clone https://github.com/VeiderFa/computationalbasics26exercise.git`
+2. Ein Terminal öffnen, in einen Ordner wechseln und dann folgenden Befehl eingeben: `git clone https://github.com/VeiderFa/computationalbasics26exercise.git`
 
-Wer kein git nutzen will: auf GitHub **Code → Download ZIP** und entpacken.
+3. Auf GitHub rechts oben auf **Code → Download ZIP** klicken, das Download in einen passenden Ordner wecheslen und entpacken (extract here).
 
-## 3. Umgebung erstellen (einmalig, ~1 Minute)
+## 3. Umgebung erstellen (einmalig)
 
-Terminal in VS Code öffnen (**Strg+`**) und im Repo-Ordner ausführen:
+In VS Code den Ordner mit dem Github-Repository durch **File → Open Folder** aufmachen
+Terminal in VS Code öffnen (**Strg+J** oder ganz rechts oben **Toggle Panel** anklicken) und im Terminal folgenden Befehl ausführen:
 
 ```
 uv sync
 ```
 
-Das lädt die passende Python-Version, erstellt `.venv/` und installiert alle
-Pakete. Du musst **nichts aktivieren**.
+Das lädt die passende Python-Version, erstellt eine virtuelle Umgebung `.venv/` und installiert alle
+Pakete die wir brauchen für den Kurs. Du musst **nichts aktivieren**.
 
 ## 4. VS Code Extensions
 
@@ -47,7 +50,7 @@ installieren: **Installieren** klicken.
 
 ## 5. Testen
 
-`check_setup.ipynb` öffnen → oben rechts **Select Kernel → Python
+`check_setup.ipynb` öffnen (im Explorer link oben im Ordner **computationalbasics26exercise**) → oben rechts **Select Kernel → Python
 Environments → .venv** → Zelle ausführen. Es muss `Setup OK` erscheinen.
 VS Code wählt `.venv` meist automatisch.
 
