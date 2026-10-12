@@ -6,47 +6,52 @@ Python-Umgebung ist im Repo definiert. Du musst nur **ein** Tool installieren
 
 ## 1. Einmalig installieren
 
+Folgende Tools müssen installiert werden damit der Code am Ende läuft. 
+
 | Tool | Windows | Mac |
 |---|---|---|
 | **uv** | `winget install --id=astral-sh.uv -e` | `brew install uv` (oder `curl -LsSf https://astral.sh/uv/install.sh \| sh`) |
 | **git** | `winget install --id=Git.Git -e` | `git --version` öffnen – Xcode Command Line Tools werden angeboten |
 | **VS Code** | `winget install --id=Microsoft.VisualStudioCode -e` | `brew install --cask visual-studio-code` |
 
-> Falls du VS Code noch nicht in der ersten Vorlesung installiert hast, kannst du
-> es auch direkt von der Website herunterladen:
+> Weitere Informationen zur Installation gibt es direkt auf den Websites:
 > [https://code.visualstudio.com/](https://code.visualstudio.com/)
+> [https://git-scm.com/install/](https://git-scm.com/install/)
+> [https://docs.astral.sh/uv/getting-started/installation/][https://docs.astral.sh/uv/getting-started/installation/]
 
 > **Wichtig:** Terminal (und VS Code) nach der Installation **schließen und neu
 > öffnen**, sonst findet das System die neuen Befehle nicht.
+> Python laden wir dann über uv nochmal runter falls ihr es jetzt noch nicht auf eurem PC habt.
 
-## 2. Repository holen
+## 2. Repository von Github holen
 
-Wenn eine dieser Optionen nicht funktioniert, eine der anderen ausprobieren.
+Wenn eine dieser Optionen nicht funktioniert, eine der anderen Optionen ausprobieren.
 
 1. In VS Code: **Strg/Cmd+Shift+P → "Git: Clone"**, URL einfügen:
 `https://github.com/VeiderFa/computationalbasics26exercise.git`,
-Ordner wählen, dann **Open**.
+Ordner für den Kurs wählen oder erstellen, dann **Open**.
 
-2. Ein Terminal öffnen, in einen Ordner wechseln und dann folgenden Befehl eingeben: `git clone https://github.com/VeiderFa/computationalbasics26exercise.git`
+2. Ein Terminal öffnen (extern oder in VS Code via **Ctrl + J**), in einen Ordner der Wahl für den Kurs wechseln und dann folgenden Befehl eingeben: `git clone https://github.com/VeiderFa/computationalbasics26exercise.git`
 
-3. Auf GitHub rechts oben auf **Code → Download ZIP** klicken, das Download in einen passenden Ordner wecheslen und entpacken (extract here).
+3. Auf GitHub rechts oben auf **Code → Download ZIP** klicken, das Download in einen passenden Ordner wechseln und entpacken (extract here).
+
+Bei Fehlermeldungen gleich melden, wir besprechen dann mögliche Lösungsmöglichkeiten.
 
 ## 3. Umgebung erstellen (einmalig)
 
-In VS Code den Ordner mit dem Github-Repository durch **File → Open Folder** aufmachen
+In VS Code den Ordner wo jetzt das Github-Repository reingeladen wurde durch **File → Open Folder** aufmachen
 Terminal in VS Code öffnen (**Strg+J** oder ganz rechts oben **Toggle Panel** anklicken) und im Terminal folgenden Befehl ausführen:
 
 ```
 uv sync
 ```
 
-Das lädt die passende Python-Version, erstellt eine virtuelle Umgebung `.venv/` und installiert alle
-Pakete die wir brauchen für den Kurs. Du musst **nichts aktivieren**.
+Das lädt die passende Python-Version (und installiert Python falls es noch nicht installiert wurde), erstellt eine virtuelle Umgebung `.venv/` und installiert alle Pakete die wir brauchen für den Kurs. Du musst **nichts aktivieren**.
 
 ## 4. VS Code Extensions
 
 Wenn VS Code fragt, die **empfohlenen Extensions** (Python und Jupyter) zu
-installieren: **Installieren** klicken.
+installieren: **Installieren** klicken. Ansonsten können dieselinks bei dem Symbol mit vier Rechtecken runtergeladen werden.
 
 ## 5. Testen
 
