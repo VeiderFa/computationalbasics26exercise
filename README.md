@@ -93,6 +93,28 @@ committen. Danach: `git pull` und `uv sync`.
   [python.org](https://www.python.org/downloads/) installieren; `uv` nutzt es
   dann automatisch.
 
+## Funktioniert uv nicht? Workaround
+
+Wenn `uv` nicht installierbar ist oder `uv sync` nicht klappt, reicht eine
+ganz normale Python-Umgebung, um die Notebooks trotzdem laufen zu lassen:
+
+1. Python von [python.org](https://www.python.org/downloads/) installieren
+   (Version ≥ 3.13; bei Windows das Häkchen **"Add Python to PATH"** setzen).
+2. Im Repo-Ordner ein Terminal öffnen und ausführen:
+   ```powershell
+   python -m venv .venv
+   .venv\Scripts\python -m pip install --upgrade pip
+   .venv\Scripts\python -m pip install ipykernel numpy pandas matplotlib
+   ```
+   (Mac/Linux stattdessen: `.venv/bin/python -m pip install ...`)
+3. `check_setup.ipynb` öffnen → **Select Kernel → Python Environments → .venv**
+   → Zelle ausführen. Es muss `Setup OK` erscheinen.
+
+Die Notebooks brauchen nur `numpy`, `pandas` und `matplotlib` – kleinere
+Versionsunterschiede sind egal. `.venv/` steht schon in `.gitignore`, es wird
+also nichts ins Repo committen. Funktioniert `uv` nachträglich doch, ersetzt
+`uv sync` diese Umgebung einfach.
+
 ## Nie tun
 
 - `.venv/` **nicht** ins Repo committen (steht schon in `.gitignore`).
