@@ -77,6 +77,13 @@ committen. Danach: `git pull` und `uv sync`.
 ## Häufige Probleme
 
 - **`command not found: uv`** – Terminal/VS Code neu öffnen.
+  **Windows:** Meldet `uv --version` „uv wird nicht erkannt"? VS Code komplett
+  schließen und neu öffnen (VS Code übernimmt die PATH-Änderung nur beim
+  Neustart des Fensters). In einem bereits offenen Terminal hilft:
+  `$env:Path += ";$env:USERPROFILE\.local\bin"`.
+  Fehlt der Pfad dauerhaft:
+  `[Environment]::SetEnvironmentVariable("Path", "$env:USERPROFILE\.local\bin;$([Environment]::GetEnvironmentVariable('Path','User'))", "User")`
+  und ein neues Terminal öffnen.
 - **`ModuleNotFoundError` im Notebook** – falscher Kernel. Oben rechts muss
   `.venv` stehen. Fragt VS Code nach `ipykernel`, ist der falsche Kernel
   gewählt (`ipykernel` ist bereits im Repo enthalten).
