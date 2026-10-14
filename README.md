@@ -4,9 +4,40 @@ Dieses Repo enthält die Programmierübungen und das Skriptum. Die komplette
 Python-Umgebung ist im Repo definiert. Du musst nur **ein** Tool installieren
 (`uv`), das Repo klonen und **einen** Befehl ausführen.
 
+**Wie lange dauert das?** Rund 20 Minuten, wenn alles glatt läuft. Arbeite die
+Schritte der Reihe nach ab und mach bei jedem Schritt die kleine „Passt das?"
+-Prüfe, bevor du weitermachst.
+
+## 0. Begriffe, die du hier überall siehst
+
+Kein Vorwissen nötig – das Wichtigste in einem Satz:
+
+| Begriff | Bedeutung |
+|---|---|
+| **Terminal** | Ein Fenster, in das du Befehle tippst und mit Enter ausführst. Statt Mausklicks also Tastatureingaben. |
+| **Repository (Repo)** | Der Projektordner, der bei GitHub liegt – bei uns `computationalbasics26exercise`. |
+| **Klonen** | Eine Kopie des Repos von GitHub auf deinen Rechner laden (Befehl `git clone`). |
+| **VS Code** | Der Editor, in dem wir Code schreiben und Notebooks öffnen. |
+| **Notebook (`.ipynb`)** | Eine Datei mit Code-Zellen. Du führst Zelle für Zelle ausführst und siehst direkt das Ergebnis darunter. |
+| **`.venv`** | Unsere fertige Python-Umgebung im Repo-Ordner. Enthält Python plus alle nötigen Pakete. Du musst sie **nicht** aktivieren. |
+| **Kernel** | „Welches Python benutzt das Notebook gerade?" – oben rechts in VS Code eingestellt, muss `.venv` sein. |
+| **Arbeitsverzeichnis** | Der Ordner, von dem aus der Code läuft. Bei uns immer der Repo-Hauptordner. |
+
+Tastatur-Kürzel: **Strg** ist die Taste auf Windows, **⌘ (Cmd)** auf Mac. Wenn
+unten „Strg/⌘+J" steht, drück also Strg+J (Windows) oder ⌘+J (Mac).
+
 ## 1. Einmalig installieren
 
-Folgende Tools müssen installiert werden damit der Code am Ende läuft. 
+Folgende Tools müssen installiert werden, damit der Code am Ende läuft.
+Öffne zuerst ein **Terminal**:
+
+- **Windows:** Start-Menü öffnen, `Terminal` eintippen, öffnen (Powershell ist
+  auch okay).
+- **Mac:** ⌘+Leertaste, `Terminal` eintippen, Enter.
+
+Dann je Tool den Befehl für dein Betriebssystem einfügen. Einfügen im Terminal
+geht mit **Rechtsklick → Einfügen** (im Mac-Terminal: ⌘+V). Mit **Enter**
+wird der Befehl ausgeführt.
 
 | Tool | Windows | Mac |
 |---|---|---|
@@ -15,59 +46,190 @@ Folgende Tools müssen installiert werden damit der Code am Ende läuft.
 | **VS Code** | `winget install --id=Microsoft.VisualStudioCode -e` | `brew install --cask visual-studio-code` |
 
 > Weitere Informationen zur Installation gibt es direkt auf den Websites:
-> [https://code.visualstudio.com/](https://code.visualstudio.com/)
-> [https://git-scm.com/install/](https://git-scm.com/install/)
-> [https://docs.astral.sh/uv/getting-started/installation/][https://docs.astral.sh/uv/getting-started/installation/]
+> [https://code.visualstudio.com/](https://code.visualstudio.com/),
+> [https://git-scm.com/install/](https://git-scm.com/install/),
+> [https://docs.astral.sh/uv/getting-started/installation/](https://docs.astral.sh/uv/getting-started/installation/)
+
+**Passt das?** Tippe als Kontrolle `uv --version` und dann `git --version` ins
+Terminal und drück Enter. Wenn versionsnummern ausgedruckt werden, ist das Tool
+installiert. „Befehl nicht gefunden" bzw. „command not found" heißt: siehe
+[Häufige Probleme](#häufige-probleme).
 
 > **Wichtig:** Terminal (und VS Code) nach der Installation **schließen und neu
 > öffnen**, sonst findet das System die neuen Befehle nicht.
-> Python laden wir dann über uv nochmal runter falls ihr es jetzt noch nicht auf eurem PC habt.
+> Python laden wir dann über uv nochmal runter, falls ihr es jetzt noch nicht
+> auf eurem PC habt.
 
-## 2. Repository von Github holen
+## 2. VS Code öffnen und verstehen
 
-Wenn eine dieser Optionen nicht funktioniert, eine der anderen Optionen ausprobieren.
+1. VS Code öffnen (Windows: Start-Menü → „Visual Studio Code"; Mac: ⌘+Leertaste
+   → „Visual Studio Code").
+2. Beim ersten Start fragt VS Code nach einem **Design** (Dark oder Light) –
+   egal, einfach eines aussuchen und auf **Next** klicken.
+3. VS Code fragt „Do you trust the authors of the files in this Folder?" –
+   das ist unser Kursmaterial: auf **Yes, I trust the authors** klicken.
 
-1. In VS Code: **Strg/Cmd+Shift+P → "Git: Clone"**, URL einfügen:
-`https://github.com/VeiderFa/computationalbasics26exercise.git`,
-Ordner für den Kurs wählen oder erstellen, dann **Open**.
+Das Fenster hat drei wichtige Bereiche:
 
-2. Ein Terminal öffnen (extern oder in VS Code via **Ctrl + J**), in einen Ordner der Wahl für den Kurs wechseln und dann folgenden Befehl eingeben: `git clone https://github.com/VeiderFa/computationalbasics26exercise.git`
+- **Links der Explorer** (Ordner-Ansicht). Wenn du ihn nicht siehst: das
+  Ordner-Symbol ganz oben in der linken Leiste anklicken (oder Strg/⌘+Shift+E).
+- **Mitte der Editor.** Jede geöffnete Datei wird ein **Tab** oben im Editor.
+  Ein Tab schließt du mit dem **×**.
+- **Unten das Panel** (Terminal, Probleme, …). Öffnet sich mit **Strg/⌘+J**.
 
-3. Auf GitHub rechts oben auf **Code → Download ZIP** klicken, das Download in einen passenden Ordner wechseln und entpacken (extract here).
+## 3. Repository von GitHub holen
 
-Bei Fehlermeldungen gleich melden, wir besprechen dann mögliche Lösungsmöglichkeiten.
+Wenn eine dieser Optionen nicht funktioniert, eine der anderen ausprobieren.
+**Option 1 ist empfohlen.**
 
-## 3. Umgebung erstellen (einmalig)
+### Option 1 (empfohlen): Klonen über VS Code
 
-In VS Code den Ordner wo jetzt das Github-Repository reingeladen wurde durch **File → Open Folder** aufmachen
-Terminal in VS Code öffnen (**Strg+J** oder ganz rechts oben **Toggle Panel** anklicken) und im Terminal folgenden Befehl ausführen:
+1. Drück **Strg/⌘+Shift+P**. Ganz oben öffnet sich eine **Kommando-Palette**
+   (ein Eingabefeld mit einer Leiste).
+2. Tippe `Git: Clone` und drück **Enter**.
+3. Es erscheint ein weiteres Feld: die URL
+   `https://github.com/VeiderFa/computationalbasics26exercise.git`
+   einfügen (Strg/⌘+V) und **Enter** drücken.
+4. Jetzt fragt VS Code nach einem **Ordner**, in den geklont werden soll.
+   Wähle einen Ort für deine Kursordner (z. B. `Dokumente/Kurse`), ggf. vorher
+   über das Feld „New Folder" einen neuen Ordner anlegen.
+5. Unten rechts fragt VS Code: **Open?** → auf **Open** klicken. VS Code öffnet
+   das Repo.
 
+### Option 2: Klonen über das Terminal
+
+1. Öffne ein Terminal – in VS Code mit **Strg/⌘+J**, dann oben im Panel den
+   Reiter **Terminal** anklicken (Windows alternativ: Start-Menü → Terminal).
+2. Wechsle in den Ordner, in den das Repo soll. Das machst du mit `cd`
+   („change directory"), danach Enter:
+   - Windows: `cd C:\Users\DeinName\Dokumente\Kurse`
+   - Mac: `cd /Users/DeinName/Dokumente/Kurse`
+   - Tipp: `cd ` tippen (mit Leerzeichen), dann den Ordner aus dem Finder /
+     Explorer ins Terminal **ziehen** – dann wird der Pfad automatisch
+     eingefügt.
+3. Dann eintippen und Enter ausführen:
+   `git clone https://github.com/VeiderFa/computationalbasics26exercise.git`
+4. Öffne anschließend in VS Code diesen Ordner: **File → Open Folder…** und
+   wähle `computationalbasics26exercise`.
+
+### Option 3: Nur als Notfall – ZIP herunterladen
+
+1. Auf GitHub rechts oben auf **Code → Download ZIP** klicken.
+2. In den Download-Ordner wechseln, Rechtsklick auf die ZIP-Datei →
+   **Hier entpacken** (Mac: Doppelklick).
+3. In VS Code **File → Open Folder…** → den entpackten Ordner öffnen.
+
+> Achtung: Bei dieser Variante fehlt der `.git`-Ordner. Du kannst das Repo
+> dann **nicht** per `git pull` aktualisieren – versuch deshalb immer zuerst
+> Option 1 oder 2.
+
+Bei Fehlermeldungen gleich melden, wir besprechen dann mögliche
+Lösungsmöglichkeiten.
+
+## 4. Umgebung erstellen (einmalig)
+
+1. Falls nicht schon geschehen: das Repo in VS Code öffnen –
+   **File → Open Folder…** und den Ordner `computationalbasics26exercise`
+   (den mit dem README.md) auswählen. **Immer den Hauptordner öffnen, nie
+   einen Unterordner.**
+2. Terminal öffnen: **Strg/⌘+J** (oder das Terminal-Symbol im Panel) und den
+   Reiter **Terminal** anklicken.
+3. Tippe ein:
+   ```
+   uv sync
+   ```
+   und drück **Enter**. Das lädt ein paar Sekunden bis ein paar Minuten.
+4. Am Ende sollte etwas wie `Installed x packages` oder `Audited x packages`
+   stehen – kein `error`.
+
+Das lädt die passende Python-Version (und installiert Python, falls es noch
+nicht installiert wurde), erstellt die virtuelle Umgebung `.venv/` und
+installiert alle Pakete, die wir für den Kurs brauchen. Du musst **nichts
+aktivieren**.
+
+## 5. VS Code Extensions
+
+Extensions sind Zusatzprogramme, die VS Code neue Funktionen geben – wir
+brauchen zwei: **Python** und **Jupyter**.
+
+- Wenn VS Code beim Öffnen des Repos rechts oben nach den **empfohlenen
+  Extensions** fragt: auf **Install** klicken, fertig.
+- Falls nicht: links in der Aktivitätsleiste das **Symbol mit den vier
+  Rechtecken** (Extensions) anklicken, oben in die Suche `Python` tippen →
+  beim Eintrag von Microsoft auf **Installieren**. Dann dasselbe für
+  `Jupyter`.
+
+**Passt das?** In der linken Leiste sollte unten „Python" und „Jupyter" unter
+*Installed* stehen.
+
+## 6. Testen
+
+1. Im **Explorer** (links, Ordner-Symbol) den Hauptordner
+   `computationalbasics26exercise` aufklappen und **`check_setup.ipynb`**
+   anklicken. Die Datei öffnet sich als Tab im Editor.
+2. Oben rechts im Notebook steht jetzt **Select Kernel** (oder ein Python-
+   Symbol). Anklicken und wählen:
+   **Python Environments → `.venv`** (ggf. erst **Jupyter Kernel**).
+   VS Code wählt `.venv` meist automatisch – dann steht dort schon der richtige
+   Name.
+3. In die erste Zelle klicken (die mit `import sys, …`) und oben im
+   Zellen-Rand auf das **▶**-Dreieck klicken – oder **Shift+Enter** drücken.
+4. Unter der Zelle muss folgendes erscheinen (Werte dürfen abweichen):
+   ```
+   Python: 3.13.x ...
+   numpy ... | pandas ... | matplotlib ...
+   Setup OK
+   ```
+
+**Passt das?** Sobald `Setup OK` da ist, ist deine Umgebung fertig. Nur noch
+in die Übungen – viel Erfolg!
+
+## 7. Arbeiten im Alltag
+
+### Grundsätzliches
+
+- **Öffne VS Code immer im Repo-Hauptordner** (`File → Open Folder…` →
+  `computationalbasics26exercise`), nie in einem Unterordner. Alle Notebooks
+  und Skripte laufen mit dem Repo-Ordner als Arbeitsverzeichnis – Datendateien
+  wie `labormarket.csv` liegen deshalb auch dort.
+- **Geöffnete Dateien sind Tabs** oben im Editor. Zwischen Tabs wechselst du
+  mit einem Klick; schließen mit dem **×**. Verschiedene Dateien nebeneinander
+  anzeigen geht, indem du den Tab aus der Mitte an die Fensterkante ziehst
+  (geteilte Ansicht).
+- **Neue Datei/Ordner im Explorer:** Rechtsklick im Explorer → **New
+  File… / New Folder…**.
+
+### Notebooks (`.ipynb`)
+
+1. Im Explorer das Notebook anklicken (z. B.
+   `Übungen/Kapitel2_UE.ipynb`).
+2. Falls oben rechts nicht `.venv` steht: **Select Kernel → Python
+   Environments → `.venv`** (siehe [Testen](#6-testen)).
+3. In eine Zelle klicken und **Shift+Enter** ausführen – Ergebnis erscheint
+   direkt darunter. Mit **Shift+Enter** landest du automatisch in der nächsten
+   Zelle.
+4. Neue Zelle: **+ Code** (oben rechts) oder mit der Maus zwischen zwei Zellen
+   am linken Rand.
+5. Speichern: **Strg/⌘+S** (wichtig vor dem Schließen!).
+
+### Python-Skripte (`.py`)
+
+- **Über die Run-Knopf:** Datei öffnen, oben rechts im Editor das **▶**
+  anklicken. Die Ausgabe erscheint unten im Terminal.
+- **Über das Terminal** (Strg/⌘+J → Reiter Terminal), z. B.:
+  ```
+  uv run python Programme/Programm6.py
+  ```
+
+### Repo aktualisieren, wenn es neue Aufgaben gibt
+
+In einem Terminal im Repo-Hauptordner:
 ```
+git pull
 uv sync
 ```
-
-Das lädt die passende Python-Version (und installiert Python falls es noch nicht installiert wurde), erstellt eine virtuelle Umgebung `.venv/` und installiert alle Pakete die wir brauchen für den Kurs. Du musst **nichts aktivieren**.
-
-## 4. VS Code Extensions
-
-Wenn VS Code fragt, die **empfohlenen Extensions** (Python und Jupyter) zu
-installieren: **Installieren** klicken. Ansonsten können dieselinks bei dem Symbol mit vier Rechtecken runtergeladen werden.
-
-## 5. Testen
-
-`check_setup.ipynb` öffnen (im Explorer link oben im Ordner **computationalbasics26exercise**) → oben rechts **Select Kernel → Python
-Environments → .venv** → Zelle ausführen. Es muss `Setup OK` erscheinen.
-VS Code wählt `.venv` meist automatisch.
-
-## 6. Arbeiten
-
-- **Alle** Notebooks und Skripte laufen mit dem **Repo-Ordner als
-  Arbeitsverzeichnis**. Öffne VS Code immer im Repo-Hauptordner, nicht in
-  einem Unterordner. Datendateien wie `labormarket.csv` liegen deshalb im
-  Hauptordner.
-- **Notebook:** öffnen, Kernel `.venv` wählen, starten.
-- **Python-Skript:** VS Code Run-Knopf, oder im Terminal
-  `uv run python Programme/Programm6.py`.
+Dann die betroffenen Dateien in VS Code neu öffnen. Vor dem Pull eigene
+Änderungen an den Übungsnotebooks sichern – siehe [Nie tun](#nie-tun).
 
 ## Paket-Änderungen (nur Lehrperson)
 
@@ -87,6 +249,9 @@ committen. Danach: `git pull` und `uv sync`.
 - **`ModuleNotFoundError` im Notebook** – falscher Kernel. Oben rechts muss
   `.venv` stehen. Fragt VS Code nach `ipykernel`, ist der falsche Kernel
   gewählt (`ipykernel` ist bereits im Repo enthalten).
+- **Der Tab zeigt „(unrestricted mode)" oder der Run-Knopf fehlt** – VS Code
+  vertraut dem Ordner nicht. Links unten (oder über das Schloss-Symbol) auf
+  **Manage → Trust** klicken.
 - **Etwas ist kaputt** – Ordner `.venv` löschen und `uv sync` erneut
   ausführen. Das behebt fast alles.
 - **Keine Internetverbindung zum Python-Download** – Python von
