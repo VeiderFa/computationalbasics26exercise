@@ -10,7 +10,7 @@ Schritte der Reihe nach ab und mach bei jedem Schritt die kleine „Passt das?"
 
 ## 0. Begriffe, die du hier überall siehst
 
-Kein Vorwissen nötig – das Wichtigste in einem Satz:
+Kein Vorwissen nötig, das sind die wichtigsten Begriffe die auch in der Vorlesung vorkommen:
 
 | Begriff | Bedeutung |
 |---|---|
@@ -169,7 +169,7 @@ brauchen zwei: **Python** und **Jupyter**.
    anklicken. Die Datei öffnet sich als Tab im Editor.
 2. Oben rechts im Notebook steht jetzt **Select Kernel** (oder ein Python-
    Symbol). Anklicken und wählen:
-   **Python Environments → `.venv`** (ggf. erst **Jupyter Kernel**).
+   **Python Environments → `.venv`** bzw. `computationalbasics26exercise`** (ggf. erst **Python Kernel**).
    VS Code wählt `.venv` meist automatisch – dann steht dort schon der richtige
    Name.
 3. In die erste Zelle klicken (die mit `import sys, …`) und oben im
@@ -181,10 +181,9 @@ brauchen zwei: **Python** und **Jupyter**.
    Setup OK
    ```
 
-**Passt das?** Sobald `Setup OK` da ist, ist deine Umgebung fertig. Nur noch
-in die Übungen – viel Erfolg!
+**Passt das?** Sobald `Setup OK` da ist, ist deine Umgebung fertig. 
 
-## 7. Arbeiten im Alltag
+## 7. Arbeiten mit dem VS Code Setup
 
 ### Grundsätzliches
 
@@ -204,7 +203,7 @@ in die Übungen – viel Erfolg!
 1. Im Explorer das Notebook anklicken (z. B.
    `Übungen/Kapitel2_UE.ipynb`).
 2. Falls oben rechts nicht `.venv` steht: **Select Kernel → Python
-   Environments → `.venv`** (siehe [Testen](#6-testen)).
+   Environments → `.venv`** bzw. `computationalbasics26exercise`** (siehe [Testen](#6-testen)).
 3. In eine Zelle klicken und **Shift+Enter** ausführen – Ergebnis erscheint
    direkt darunter. Mit **Shift+Enter** landest du automatisch in der nächsten
    Zelle.
@@ -221,9 +220,9 @@ in die Übungen – viel Erfolg!
   uv run python Programme/Programm6.py
   ```
 
-### Repo aktualisieren, wenn es neue Aufgaben gibt
+### Repo aktualisieren, wenn es neue Aufgaben oder Updates von den Lehrenden gibt
 
-In einem Terminal im Repo-Hauptordner:
+In einem Terminal im Repo-Hauptordner (`computationalbasics26exercise`**):
 ```
 git pull
 uv sync
@@ -231,7 +230,7 @@ uv sync
 Dann die betroffenen Dateien in VS Code neu öffnen. Vor dem Pull eigene
 Änderungen an den Übungsnotebooks sichern – siehe [Nie tun](#nie-tun).
 
-## Paket-Änderungen (nur Lehrperson)
+## Paket-Änderungen (für Lehrende)
 
 `uv add <paket>`, dann `pyproject.toml`, `uv.lock` und `.python-version`
 committen. Danach: `git pull` und `uv sync`.
