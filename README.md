@@ -60,7 +60,7 @@ installiert. „Befehl nicht gefunden" bzw. „command not found" heißt: siehe
 > Python laden wir dann über uv nochmal runter, falls ihr es jetzt noch nicht
 > auf eurem PC habt.
 
-## 2. VS Code öffnen und verstehen
+## 2. VS Code Basics
 
 1. VS Code öffnen (Windows: Start-Menü → „Visual Studio Code"; Mac: ⌘+Leertaste
    → „Visual Studio Code").
@@ -82,7 +82,7 @@ Das Fenster hat drei wichtige Bereiche:
 Wenn eine dieser Optionen nicht funktioniert, eine der anderen ausprobieren.
 **Option 1 ist empfohlen.**
 
-### Option 1 (empfohlen): Klonen über VS Code
+### Option 1: Klonen über VS Code
 
 1. Drück **Strg/⌘+Shift+P**. Ganz oben öffnet sich eine **Kommando-Palette**
    (ein Eingabefeld mit einer Leiste).
@@ -112,7 +112,7 @@ Wenn eine dieser Optionen nicht funktioniert, eine der anderen ausprobieren.
 4. Öffne anschließend in VS Code diesen Ordner: **File → Open Folder…** und
    wähle `computationalbasics26exercise`.
 
-### Option 3: Nur als Notfall – ZIP herunterladen
+### Option 3: ZIP herunterladen
 
 1. Auf GitHub rechts oben auf **Code → Download ZIP** klicken.
 2. In den Download-Ordner wechseln, Rechtsklick auf die ZIP-Datei →
@@ -149,7 +149,7 @@ aktivieren**.
 
 ## 5. VS Code Extensions
 
-Extensions sind Zusatzprogramme, die VS Code neue Funktionen geben – wir
+Extensions sind Zusatzprogramme, die VS Code neue Funktionen geben. Wir
 brauchen zwei: **Python** und **Jupyter**.
 
 - Wenn VS Code beim Öffnen des Repos rechts oben nach den **empfohlenen
@@ -164,12 +164,12 @@ brauchen zwei: **Python** und **Jupyter**.
 
 ## 6. Testen
 
-1. Im **Explorer** (links, Ordner-Symbol) den Hauptordner
+1. Im **Explorer** (links oben unter File und Edit, Ordner-Symbol) den Hauptordner
    `computationalbasics26exercise` aufklappen und **`check_setup.ipynb`**
    anklicken. Die Datei öffnet sich als Tab im Editor.
 2. Oben rechts im Notebook steht jetzt **Select Kernel** (oder ein Python-
    Symbol). Anklicken und wählen:
-   **Python Environments → `.venv`** bzw. `computationalbasics26exercise`** (ggf. erst **Python Kernel**).
+   **Python Environments → `.venv`** bzw. `computationalbasics26exercise`** (ggf. erst auf **Python Kernel** klicken, dann auswählen).
    VS Code wählt `.venv` meist automatisch – dann steht dort schon der richtige
    Name.
 3. In die erste Zelle klicken (die mit `import sys, …`) und oben im
@@ -213,7 +213,7 @@ brauchen zwei: **Python** und **Jupyter**.
 
 ### Python-Skripte (`.py`)
 
-- **Über die Run-Knopf:** Datei öffnen, oben rechts im Editor das **▶**
+- **Über den Run-Knopf:** Datei öffnen, oben rechts im Editor das **▶**
   anklicken. Die Ausgabe erscheint unten im Terminal.
 - **Über das Terminal** (Strg/⌘+J → Reiter Terminal), z. B.:
   ```
@@ -240,13 +240,9 @@ committen. Danach: `git pull` und `uv sync`.
 - **`command not found: uv`** – Terminal/VS Code neu öffnen.
   **Windows:** Meldet `uv --version` „uv wird nicht erkannt"? VS Code komplett
   schließen und neu öffnen (VS Code übernimmt die PATH-Änderung nur beim
-  Neustart des Fensters). In einem bereits offenen Terminal hilft:
-  `$env:Path += ";$env:USERPROFILE\.local\bin"`.
-  Fehlt der Pfad dauerhaft:
-  `[Environment]::SetEnvironmentVariable("Path", "$env:USERPROFILE\.local\bin;$([Environment]::GetEnvironmentVariable('Path','User'))", "User")`
-  und ein neues Terminal öffnen.
+  Neustart des Fensters). 
 - **`ModuleNotFoundError` im Notebook** – falscher Kernel. Oben rechts muss
-  `.venv` stehen. Fragt VS Code nach `ipykernel`, ist der falsche Kernel
+  `.venv` bzw. `computationalbasics26exercise`** stehen. Fragt VS Code nach `ipykernel`, ist der falsche Kernel
   gewählt (`ipykernel` ist bereits im Repo enthalten).
 - **Der Tab zeigt „(unrestricted mode)" oder der Run-Knopf fehlt** – VS Code
   vertraut dem Ordner nicht. Links unten (oder über das Schloss-Symbol) auf
@@ -271,10 +267,10 @@ ganz normale Python-Umgebung, um die Notebooks trotzdem laufen zu lassen:
    .venv\Scripts\python -m pip install ipykernel numpy pandas matplotlib
    ```
    (Mac/Linux stattdessen: `.venv/bin/python -m pip install ...`)
-3. `check_setup.ipynb` öffnen → **Select Kernel → Python Environments → .venv**
+3. `check_setup.ipynb` öffnen → **Select Kernel → Python Environments → .venv** bzw. `computationalbasics26exercise`**
    → Zelle ausführen. Es muss `Setup OK` erscheinen.
 
-Die Notebooks brauchen nur `numpy`, `pandas` und `matplotlib` – kleinere
+Die Notebooks brauchen nur `numpy`, `pandas` und `matplotlib`, kleinere
 Versionsunterschiede sind egal. `.venv/` steht schon in `.gitignore`, es wird
 also nichts ins Repo committen. Funktioniert `uv` nachträglich doch, ersetzt
 `uv sync` diese Umgebung einfach.
