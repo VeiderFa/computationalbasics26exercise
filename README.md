@@ -8,6 +8,11 @@ Python-Umgebung ist im Repo definiert. Du musst nur **ein** Tool installieren
 Schritte der Reihe nach ab und mach bei jedem Schritt die kleine „Passt das?"
 -Prüfe, bevor du weitermachst.
 
+**Wenn gar nichts klappt** (kein `uv` installierbar, kein Terminal, kein
+VS Code): Du kannst die Übungen komplett **im Browser** mit Google Colab
+machen – nichts installieren, alles läuft in der Cloud. Siehe
+[Plan B: Google Colab](#funktioniert-gar-nichts-google-colab-als-plan-b).
+
 ## 0. Begriffe, die du hier überall siehst
 
 Kein Vorwissen nötig, das sind die wichtigsten Begriffe die auch in der Vorlesung vorkommen:
@@ -273,7 +278,111 @@ ganz normale Python-Umgebung, um die Notebooks trotzdem laufen zu lassen:
 Die Notebooks brauchen nur `numpy`, `pandas` und `matplotlib`, kleinere
 Versionsunterschiede sind egal. `.venv/` steht schon in `.gitignore`, es wird
 also nichts ins Repo committen. Funktioniert `uv` nachträglich doch, ersetzt
-`uv sync` diese Umgebung einfach.
+`uv sync` diese Umgebung einfach. Klappt auch das nicht, geht es ohne
+lokale Installation weiter – siehe
+[Plan B: Google Colab](#funktioniert-gar-nichts-google-colab-als-plan-b).
+
+## Funktioniert gar nichts? Google Colab als Plan B
+
+Wenn `uv`, `git` oder VS Code sich nicht installieren lassen (kein
+Admin-Recht, kein Python, fremder Laptop …), kannst du die Übungen komplett
+**im Browser** mit **Google Colab** machen. Dort läuft alles in der Cloud –
+du installierst nichts und brauchst nur ein Google-Konto und eine
+Internetverbindung.
+
+### Wie Colab funktioniert
+
+Colab ist „Jupyter im Browser": dieselben `.ipynb`-Notebooks wie bei uns,
+nur laufen die Zellen nicht auf deinem Rechner, sondern auf einem Server von
+Google. Übungen und Skriptum liegen also weiterhin auf Moodle und in GitHub, nur die
+*Ausführung* passiert woanders.
+
+- **Vorteil:** keine Installation, kein Terminal, funktioniert auf jedem
+  Gerät.
+- **Nachteil:** deine Dateien liegen auf Google-Servern, eine Sitzung kann
+  unterbrochen werden, und `git pull`/`uv sync` gibt es dort nicht.
+
+### 1. Colab öffnen
+
+1. Geh auf [https://colab.research.google.com](https://colab.research.google.com)
+   und melde dich mit deinem Google-Konto an.
+2. Über **File → New notebook** öffnet sich eine leere Zelle. Für unser
+   Material brauchen wir aber die Dateien aus dem Repo/Moodle (Schritt 2).
+
+### 2. Die Notebooks aus dem Repo holen
+
+1. **File → Open notebook…** anklicken und den Reiter **GitHub** wählen.
+2. In das Suchfeld die Repo-URL einfügen:
+   `https://github.com/VeiderFa/computationalbasics26exercise`
+   und **Enter** drücken.
+3. Colab zeigt die Notebooks des Repos – z. B. `check_setup.ipynb` und
+   `Übungen/Kapitel2_UE.ipynb`. Ein Notebook anklicken, es öffnet sich in
+   einem Colab-Tab.
+
+
+### 3. Pakete prüfen
+
+`numpy`, `pandas` und `matplotlib` sind in Colab schon vorinstalliert – ein
+`pip install` ist meist nicht nötig. Zum Nachsehen reicht in einer Zelle:
+
+```python
+import numpy, pandas, matplotlib
+print(numpy.__version__, pandas.__version__, matplotlib.__version__)
+```
+
+Fehlt doch ein Paket, installierst du es in einer Zelle mit
+`!pip install <paketname>`.
+
+### 4. Daten und Skripte hochladen
+
+In Colab ist das Arbeitsverzeichnis `/content` – dort landen auch die
+Dateien, die du hochlädst. Deshalb funktionieren die relativen Pfade in den
+Übungen, sobald die Datei dort liegt:
+
+1. Links in der Seitenleiste auf das **Ordner-Symbol** (Files) klicken.
+2. Oben auf das **Upload-Symbol** (Pfeil nach oben) klicken und
+   `labormarket.csv` auswählen. Die Datei liegt danach in `/content`.
+3. Für die Python-Skripte zusätzlich `Programme/Programm6.py` usw.
+   hochladen und in einer Zelle starten:
+   ```python
+   !python Programm6.py
+   ```
+   (Die Skripte erwarten die CSV im selben Ordner – mit dem Upload nach
+   `/content` ist das erfüllt.)
+
+### 5. Rechnen
+
+Wie in VS Code: Zelle anklicken und **Shift+Enter** drücken, das Ergebnis
+erscheint darunter. **Runtime → Restart session…** setzt alles zurück, wenn
+etwas hängt.
+
+**Passt das?** Öffne `check_setup.ipynb` und führe alle Zellen aus. Es muss
+`Setup OK` erscheinen – wie in VS Code.
+
+### 6. Ergebnisse sichern
+
+Das ist der wichtigste Unterschied zu VS Code: **In Colab landet nichts
+automatisch auf deinem Rechner.** Die Notebooks liegen in deinem
+Google-Konto, und die Sitzung wird nach ein paar Stunden beendet.
+
+1. Nach dem Bearbeiten: **File → Download → Notebook (.ipynb)**.
+2. Die heruntergeladene Datei zurück in den Repo-Ordner
+   `computationalbasics26exercise` legen (bei den Übungsnotebooks nach
+   `Übungen/`). Dann sind deine Lösungen wieder Teil des Repos und lassen
+   sich wie gewohnt mit `git pull` aktualisieren.
+3. Alternativ: in Colab **File → Save in Google Drive** und die Dateien
+   dort bearbeiten – fürs Abgeben trotzdem exportieren.
+
+### Grenzen von Colab
+
+- Kein `uv`, kein `git pull`, kein `uv sync`: Aktualisierungen der
+  Lehrenden holst du manuell (Notebook neu aus GitHub öffnen) – deine
+  eigenen Änderungen vorher sichern, sonst sind sie weg.
+- Pakete lassen sich nur mit `!pip install` nachinstallieren; eine `.venv`
+  gibt es nicht.
+- Bei hoher Auslastung kann Colab Sitzungen verlangsamen oder neu starten.
+- Wenn die fertigen Notebooks im Repo abgegeben werden müssen, ist Colab nur
+  eine Notlösung – am Ende brauchst du die `.ipynb`-Dateien im Repo-Ordner.
 
 ## Nie tun
 
